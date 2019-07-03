@@ -1,0 +1,70 @@
+.start-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.4); 
+}
+
+.start-btn:active {
+    transform: translateY(-1px);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+}
+.preview {
+    margin-top: 40px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.preview img {
+    width: 150px;
+    height: 130px;
+    margin: 10px;
+}
+.preview h1 {
+    font-size: 40px;
+   margin-left: -10%;
+   margin-top: 35px;
+}
+
+a.start-btn {
+    display: inline-block;
+    text-decoration: none;
+    text-align: center;
+    border: 1px solid;
+    color: #fff;
+    font-size: 21px;
+    font-weight: bold;
+}
+
+a.btn-center {
+    margin-left: 30%;
+    margin-top: 35px;
+    border-color: #666e95;
+    width: 100px;
+    padding: 5px;
+    border-radius: 30px;
+    background: linear-gradient(to right,#646c92, #333333);
+    cursor: pointer;
+}
+.animations {
+    display: inline-block;
+    padding-left: 80px;
+   width: 50%;
+   min-height: 200px;
+}
+.doc {
+   max-width: 50%;
+   max-height: 300px;
+   padding: 10px;
+   display: inline-block;
+   overflow: auto;
+   border: solid 6px #fff;
+    outline: solid 6px #888;
+
+}
+.project {
+    margin-left: 30%;
+}
+ .doc p {
+     line-height: 1.5;
+     font-weight: bold;
+ }

@@ -1,0 +1,11 @@
+table {
+    margin-left: 7px;
+}
+
+.second-color {
+    min-width: 25px;
+    min-height: 15px;
+    border: 1px solid black;
+    background: #777777;
+    margin: 0 4px 4px 3px;
+}
