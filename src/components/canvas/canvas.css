@@ -1,0 +1,40 @@
+.canvas {
+  max-width: 640px;
+  border: 2px solid rgba(0, 0, 0, 0.6);
+  box-shadow: 0 5px 4px rgba(0, 0, 0, 0.2);
+  min-height: 450px;
+  background: #cccccc;
+}
+
+.hidden-pixel {
+  min-width: 15px;
+  max-height: 15px;
+  background: #bbbbbb;
+  border: 1px solid rgba(0, 0, 0, 0.6);
+  margin: 10px;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.radius {
+  border-radius: 50%;
+}
+
+.btn-group {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.radio-group {
+  display: inline-block;
+  margin-top: 10px;
+  margin-left: 15px;
+}
+
+#save-img {
+  margin: 10px;
+}

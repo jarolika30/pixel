@@ -1,0 +1,30 @@
+.export {
+    display: inline-block;
+    width: 120px;
+    height: 40px;
+    border: 2px solid rgba(0, 0, 0, 0.6);
+    border-radius: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    margin: 10px;
+    background: #d4d4d4;
+}
+
+.export select, .export span {
+    margin-top: 5%;
+    margin-left: 5px;
+}
+
+.export a {
+    color: black;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.export a:hover {
+    color: #666666; 
+}
+
+.export a:active {
+    color: #777777; 
+}
+
