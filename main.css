@@ -39,6 +39,19 @@
   margin: 10px;
 }
 
+.color-ignore {
+  margin-top: 7px;
+  cursor: inherit;
+}
+
+.canvas .create-layer {
+  border: 2px solid rgba(0, 0, 0, 0.6);
+  box-shadow: 0 6px 4px rgba(0, 0, 0, 0.2);
+  height: 20px;
+  margin-top: 7px;
+  margin-right: 5px;
+}
+
 .c-1 {
 	width: 480px;
 	height: 480px;
@@ -379,11 +392,12 @@ a.btn-center {
  }
 
 .section-sliders {
-    margin-top: 20px;
+    margin-top: 10px;
     border: 2px solid rgba(0, 0, 0, 0.6);
     box-shadow: 0 6px 4px rgba(0, 0, 0, 0.2);
     box-sizing: border-box;
     background: #cccccc;
+    padding-bottom: 5px;
 }
 
 .figures-sizes {
@@ -391,9 +405,9 @@ a.btn-center {
     appearance: none;
     margin-top: 10px;
     margin-left: 45px;
-    margin-bottom: 15px;
+    margin-bottom: 5px;
     width: 200px; /* Full-width */
-    height: 10px; /* Specified height */
+    height: 5px; /* Specified height */
     background: #ffffff; /* Grey background */
     outline: none; /* Remove outline */
     opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
@@ -414,6 +428,57 @@ a.btn-center {
     cursor: pointer;
 }
 
+
+.layers { 
+    margin-top: 12px;
+    min-width: 290px;
+    min-height: 117px;
+    border: 2px solid rgba(0, 0, 0, 0.6);
+    box-shadow: 0 6px 4px rgba(0, 0, 0, 0.2);
+    box-sizing: border-box;
+    background: #cccccc;
+    padding-bottom: 5px;
+    display: flex;
+    flex-direction: row;
+    align-content: space-between;
+}
+
+.layers-img {
+    min-width: 120px;
+    min-height: 100px;
+    border: 2px solid rgba(0, 0, 0, 0.6);
+    box-shadow: 0 6px 4px rgba(0, 0, 0, 0.2);
+    margin: 1px;
+    margin-top: 2px;
+    margin-left: 20px;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+.layers button {
+    width: 100px;
+    height: 30px;
+    border-radius: 20px;
+    padding-top: 3px;
+    font-size: 12px;
+    font-weight: bold;
+    margin: 3px 20px 3px 20px;
+    border: 2px solid rgba(0, 0, 0, 0.6);
+    box-shadow: 0 6px 4px rgba(0, 0, 0, 0.2);
+}
+
+.layers button:hover {
+    border-color: rgba(0, 0, 0, 0.2);
+}
+
+.layers button:active {
+    border-color: rgba(0, 0, 0, 0.5);
+    outline: none;
+}
+
+.layers button:focus {
+    outline: none;
+}
 
 * {
     margin: 0;
