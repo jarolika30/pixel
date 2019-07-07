@@ -2,6 +2,163 @@ import addDragAndDrop from './dragAndDrop/swap';
 
 // eslint-disable-next-line import/prefer-default-export
 export const ob = {
+  onClickButtonAdd: function clickBtnAdd() {
+    document.querySelector('.add').addEventListener('click', () => {
+      const slide = document.querySelector('.container');
+      const slides = document.querySelectorAll('.slide');
+      if (slides.length !== 0) {
+        let idNext = 0;
+        if (slides[slides.length - 1].id !== null) {
+          const idFirst = slides[slides.length - 1].id;
+          idNext = (+idFirst[6] + 1);
+        } else {
+          idNext = 1;
+        }
+        const child = document.createElement('div');
+        const id = `slide-${idNext}`;
+        child.classList.add('slide');
+        child.setAttribute('id', id);
+        slide.appendChild(child);
+        const dragElem = document.getElementById(id);
+        addDragAndDrop(dragElem);
+      }
+    });
+  },
+  onClickButtonDelete: function clickBtnDel() {
+    document.querySelector('.delete').addEventListener('click', () => {
+      const slide = document.querySelector('.container');
+      const children = document.querySelectorAll('.slide');
+      if (children.length !== 0) {
+        slide.removeChild(children[children.length - 1]);
+      }
+    });
+  },
+  onClickButtonCopy: function clickBtnCopy() {
+    document.querySelector('.copy').addEventListener('click', () => {
+      const img = document.querySelector('#img');
+      const slides = document.querySelectorAll('.slide');
+      if (slides.length !== 0) {
+        const imgCopy = document.querySelector(`#${slides[slides.length - 1].id} img`);
+        if (imgCopy) {
+          const slide = document.querySelector('.container');
+          const child = document.createElement('div');
+          const imgDiv = document.createElement('img');
+          imgDiv.setAttribute('src', `${imgCopy.src}`);
+          imgDiv.style.width = '100px';
+          imgDiv.style.height = '100px';
+          const idFirst = slides[slides.length - 1].id;
+          const idNext = (+idFirst[6] + 1);
+          const id = `slide-${idNext}`;
+          child.classList.add('slide');
+          child.setAttribute('id', id);
+          child.appendChild(imgDiv);
+          slide.appendChild(child);
+          const dragElem = document.getElementById(id);
+          addDragAndDrop(dragElem);
+        } else {
+          const div = document.querySelector(`#${slides[slides.length - 1].id}`);
+          const imgDiv = document.createElement('img');
+          imgDiv.setAttribute('src', `${img.src}`);
+          imgDiv.style.width = '100px';
+          imgDiv.style.height = '100px';
+          div.appendChild(imgDiv);
+        }
+      }
+    });
+  },
+  onClickAnimation: function anim(id) {
+    function drawImg(img, ctx, ctxWidth, ctxHeight) {
+      ctx.clearRect(0, 0, ctxWidth, ctxHeight);
+      ctx.drawImage(img, 0, 0, 300, 150);
+    }
+    document.querySelector('#fps2').addEventListener('click', () => {
+      if (id !== 0) {
+        clearInterval(id);
+      }
+      const canvas = document.querySelector('.c-2');
+      canvas.style.width = '240px';
+      canvas.style.height = '200px';
+      const ctx = canvas.getContext('2d');
+      const images = document.querySelectorAll('.container img');
+      if (images.length !== 0) {
+        let i = 0;
+        // eslint-disable-next-line
+        id = setInterval(() => {
+          drawImg(images[i], ctx, 300, 200);
+          i += 1;
+          if (i >= images.length) {
+            i = 0;
+          }
+        }, 500);
+      }
+    });
+    document.querySelector('#fps4').addEventListener('click', () => {
+      if (id !== 0) {
+        clearInterval(id);
+      }
+      const canvas = document.querySelector('.c-2');
+      canvas.style.width = '240px';
+      canvas.style.height = '200px';
+      const ctx = canvas.getContext('2d');
+      const images = document.querySelectorAll('.container img');
+      if (images.length !== 0) {
+        let i = 0;
+        // eslint-disable-next-line
+        id = setInterval(() => {
+          drawImg(images[i], ctx, 300, 200);
+          i += 1;
+          if (i >= images.length) {
+            i = 0;
+          }
+        }, 250);
+      }
+    });
+    document.querySelector('#fps8').addEventListener('click', () => {
+      if (id !== 0) {
+        clearInterval(id);
+      }
+      const canvas = document.querySelector('.c-2');
+      canvas.style.width = '240px';
+      canvas.style.height = '200px';
+      const ctx = canvas.getContext('2d');
+      const images = document.querySelectorAll('.container img');
+      if (images.length !== 0) {
+        let i = 0;
+        // eslint-disable-next-line
+        id = setInterval(() => {
+          drawImg(images[i], ctx, 300, 200);
+          i += 1;
+          if (i >= images.length) {
+            i = 0;
+          }
+        }, 125);
+      }
+    });
+    document.querySelector('#full').addEventListener('click', () => {
+      if (id !== 0) {
+        clearInterval(id);
+      }
+      const canvas = document.querySelector('.c-2');
+      canvas.style.width = '240px';
+      canvas.style.height = '200px';
+      const ctx = canvas.getContext('2d');
+      const images = document.querySelectorAll('.container img');
+      if (images.length !== 0) {
+        let i = 0;
+        if (canvas.requestFullscreen) {
+          canvas.requestFullscreen();
+        }
+        // eslint-disable-next-line
+        id = setInterval(() => {
+          drawImg(images[i], ctx, 300, 200);
+          i += 1;
+          if (i >= images.length) {
+            i = 0;
+          }
+        }, 800);
+      }
+    });
+  },
   getHexRGBColor: function getHRGB(color) {
     let res = color.replace(/\s/g, '');
     const aRGB = res.match(/^rgb\((\d{1,3}[%]?),(\d{1,3}[%]?),(\d{1,3}[%]?)\)$/i);
@@ -94,7 +251,6 @@ export const ob = {
     const hex = this.getHexRGBColor(param);
     return hex;
   },
-
   drawPixel: function drPixel(x, y, height, width) {
     const canvasHtml = document.querySelector('.c-1');
     const itemSize = +canvasHtml.getAttribute('data-size');
@@ -141,7 +297,6 @@ export const ob = {
       }
     }
   },
-
   fillPixel: function fill(x, y, width, height) {
     const canvasHtml = document.querySelector('.c-1');
     const itemSize = +canvasHtml.getAttribute('data-size');
@@ -193,37 +348,6 @@ export const ob = {
       b: parseInt(result[3], 16),
     } : null;
   },
-
-  getImageFromCanvas: function getCanvas() {
-    const tmp = document.querySelector('.c-1');
-    const img = document.getElementById('img');
-    const ref = document.getElementById('save-img');
-    img.src = tmp.toDataURL();
-    const slide = document.querySelectorAll('.slide');
-    const imgSlide = document.createElement('img');
-    const way = tmp.toDataURL();
-    imgSlide.src = way;
-    ref.href = way;
-    imgSlide.style.display = 'inline';
-    imgSlide.style.width = '100px';
-    imgSlide.style.height = '100px';
-    // eslint-disable-next-line prefer-destructuring
-    const id = slide[slide.length - 1].id;
-    const idNext = (+id[6] + 1);
-    if (document.querySelector(`#${id} img`)) {
-      const newSlide = document.createElement('div');
-      newSlide.setAttribute('class', 'slide');
-      newSlide.setAttribute('id', `slide-${idNext}`);
-      newSlide.appendChild(imgSlide);
-      document.querySelector('.container').insertAdjacentElement('beforeend', newSlide);
-      const dragElem = document.getElementById(`slide-${idNext}`);
-      addDragAndDrop(dragElem);
-    } else {
-      slide[slide.length - 1].appendChild(imgSlide);
-    }
-    img.style.display = 'none';
-  },
-
   makeTriangle: function mkTriangle(ctx, x, y, side = 100) {
     const length = side;
     const shadow = document.querySelector('.shadow');
@@ -346,7 +470,19 @@ export const ob = {
     }
     ctx.restore();
   },
-
+  resetEvents: function reset() {
+    document.querySelector('.canvas').onclick = null;
+    document.querySelector('.canvas').onmousedown = null;
+    document.querySelector('.canvas').onmousemove = null;
+  },
+  addColorChangeEventListener: function colors() {
+    document.querySelector('.color').addEventListener('change', () => {
+      const secondColor = document.querySelector('.second-color');
+      const background = document.querySelector('.color').value;
+      const paramColor = this.getSecondColor(background);
+      secondColor.style.backgroundColor = `#${paramColor}`;
+    });
+  },
   contrast: function ctr(pixels) {
     const data = pixels;
     const gamma = +document.getElementById('slider').value;
@@ -356,6 +492,81 @@ export const ob = {
       data[i + 2] = 255 / (255 ** gamma) * (data[i + 2] ** gamma);
     }
     return data;
+  },
+  makeShadow: function shadow(ev, shadowSelect, ctx, x, y, color, itemSize) {
+    if (shadowSelect.dataset.state === 'on') {
+      // eslint-disable-next-line
+      shadowSelect.dataset.state = 'off';
+      ctx.shadowColor = document.querySelector('.second-color').style.backgroundColor;
+      if (ev.button === 2) {
+        ctx.shadowColor = document.querySelector('.color').value;
+      }
+      ctx.shadowOffsetX = 5;
+      ctx.shadowOffsetY = 5;
+      ctx.shadowBlur = 5;
+      ctx.beginPath();
+      ctx.rect(x, y, itemSize, itemSize);
+      ctx.strokeStyle = '#49423d';
+      ctx.lineWidth = '1';
+      ctx.fillStyle = color;
+      ctx.closePath();
+      ctx.stroke();
+      ctx.fill();
+    } else {
+      ctx.shadowColor = 'none';
+      ctx.beginPath();
+      ctx.rect(x, y, itemSize, itemSize);
+      ctx.strokeStyle = '#49423d';
+      ctx.lineWidth = '1';
+      ctx.fillStyle = color;
+      ctx.closePath();
+      ctx.stroke();
+      ctx.fill();
+    }
+  },
+  canvasResetEvents: function reset(canvas) {
+    // eslint-disable-next-line
+    canvas.onmousemove = null;
+    // eslint-disable-next-line
+    canvas.onmousedown = null;
+  },
+  drawWithPen: function drawpen(ctx, x, y, diff, lineSize, canvas) {
+    const shadow = document.querySelector('.shadow');
+    const shadowColor = document.querySelector('.second-color').style.backgroundColor;
+    if (shadow.dataset.state === 'on') {
+      ctx.save();
+      ctx.shadowColor = shadowColor;
+      ctx.shadowOffsetX = 5;
+      ctx.shadowOffsetY = 5;
+      ctx.shadowBlur = 5;
+      ctx.beginPath();
+      ctx.fillRect(x - diff, y - diff, lineSize, lineSize);
+      ctx.fillStyle = document.querySelector('.color').value;
+      ctx.closePath();
+      ctx.fill();
+      // eslint-disable-next-line
+      canvas.onmouseup = () => {
+        shadow.dataset.state = 'off';
+        // eslint-disable-next-line
+        canvas.onmousedown = null;
+        // eslint-disable-next-line
+        canvas.onmousemove = null;
+      };
+    } else {
+      ctx.shadowColor = 'none';
+      ctx.beginPath();
+      ctx.fillRect(x - diff, y - diff, lineSize, lineSize);
+      ctx.fillStyle = document.querySelector('.color').value;
+      ctx.closePath();
+      ctx.fill();
+      // eslint-disable-next-line
+      canvas.onmouseup = () => {
+        // eslint-disable-next-line
+        canvas.onmousedown = null;
+        // eslint-disable-next-line
+        canvas.onmousemove = null;
+      };
+    }
   },
   paintAllPixels: function paint() {
     const firstColor = document.querySelector('.color').value;
@@ -399,5 +610,240 @@ export const ob = {
     ctx.fillText(word, x, y);
     ctx.closePath();
   },
-
+  drawText: function text(ctx, font, shadow, color, word, eX, eY) {
+    ctx.beginPath();
+    ctx.font = `${font}px Courier New`;
+    ctx.shadowColor = shadow;
+    ctx.shadowOffsetX = 5;
+    ctx.shadowOffsetY = 5;
+    ctx.shadowBlur = 5;
+    ctx.fillStyle = color;
+    ctx.fillText(word, eX, eY);
+    ctx.closePath();
+    document.onkeypress = null;
+  },
+  erasePixel: function erase(cvsHtml, ctx, x, y, itemSize) {
+    if (cvsHtml.dataset.mode === '1') {
+      ctx.beginPath();
+      ctx.rect(x, y, itemSize, itemSize);
+      ctx.strokeStyle = '#bbbbbb';
+      ctx.lineWidth = '2';
+      ctx.fillStyle = '#bbbbbb';
+      ctx.stroke();
+      ctx.fill();
+      ctx.closePath();
+    } else {
+      ctx.beginPath();
+      ctx.rect(x, y, itemSize, itemSize);
+      ctx.strokeStyle = '#49423d';
+      ctx.lineWidth = '1';
+      ctx.fillStyle = '#bbbbbb';
+      ctx.stroke();
+      ctx.fill();
+      ctx.closePath();
+    }
+  },
+  createCanvas: function create(canvasElem) {
+    const canvas = document.createElement('canvas');
+    canvas.setAttribute('class', 'c-1');
+    canvas.setAttribute('width', `${canvasElem.width}`);
+    canvas.setAttribute('height', `${canvasElem.height}`);
+    canvas.setAttribute('data-size', canvasElem.itemSize);
+    canvas.setAttribute('title', 'canvas');
+    document.querySelector('.canvas').appendChild(canvas);
+  },
+  drawStartPixels: function init(canvasElem) {
+    const canvasHtml = document.querySelector('.c-1');
+    const itemSize = +canvasHtml.getAttribute('data-size');
+    const ctx = canvasHtml.getContext('2d');
+    const color = [];
+    const pixel = itemSize;
+    const columns = Math.floor(canvasElem.width / pixel);
+    const rows = Math.floor(canvasElem.height / pixel);
+    for (let i = 0; i < rows; i += 1) {
+      color[i] = [];
+      for (let j = 0; j < columns; j += 1) {
+        color[i][j] = '#bbbbbb';
+      }
+    }
+    for (let i = 0; i < canvasElem.height; i += pixel) {
+      for (let j = 0; j < canvasElem.width; j += pixel) {
+        ctx.beginPath();
+        ctx.rect(j, i, pixel, pixel);
+        ctx.strokeStyle = '#49423d';
+        ctx.lineWidth = '1';
+        [[ctx.fillStyle]] = color;
+        ctx.closePath();
+        ctx.stroke();
+        ctx.fill();
+      }
+    }
+  },
+  hiddenShowPixel: function hsPixel() {
+    let count = 0;
+    const canvasHtml = document.querySelector('.c-1');
+    canvasHtml.setAttribute('data-mode', 0);
+    const ctx = canvasHtml.getContext('2d');
+    function hiddenPixel() {
+      ctx.clearRect(0, 0, canvasHtml.width, canvasHtml.height);
+      ctx.beginPath();
+      ctx.fillStyle = '#bbbbbb';
+      ctx.fillRect(0, 0, canvasHtml.width, canvasHtml.height);
+      ctx.closePath();
+    }
+    function showPixel() {
+      ctx.clearRect(0, 0, canvasHtml.width, canvasHtml.height);
+      const itemSize = +canvasHtml.getAttribute('data-size');
+      const pixel = itemSize;
+      for (let i = 0; i < canvasHtml.height; i += pixel) {
+        for (let j = 0; j < canvasHtml.width; j += pixel) {
+          ctx.beginPath();
+          ctx.rect(j, i, pixel, pixel);
+          ctx.strokeStyle = '#49423d';
+          ctx.lineWidth = '0.5';
+          ctx.closePath();
+          ctx.stroke();
+        }
+      }
+    }
+    document.querySelector('.hidden-pixel').onclick = () => {
+      count += 1;
+      if (count % 2 !== 0) {
+        hiddenPixel();
+        canvasHtml.dataset.mode = 1;
+      } else {
+        showPixel();
+        canvasHtml.dataset.mode = 0;
+      }
+    };
+  },
+  deleteSlides: function delSlides() {
+    const slide = document.querySelector('.container');
+    const children = document.querySelectorAll('.slide');
+    let count = children.length;
+    while (count !== 1) {
+      slide.removeChild(children[count - 1]);
+      count -= 1;
+    }
+    const slideFirst = document.querySelector('.slide');
+    const img = document.querySelector('.slide img');
+    if (img !== null) {
+      slideFirst.removeChild(img);
+    }
+  },
+  redrawCanvas: function redrawCanvas(ctx, size, width, height) {
+    ctx.clearRect(0, 0, width, height);
+    for (let i = 0; i < height; i += size) {
+      for (let j = 0; j < width; j += size) {
+        ctx.beginPath();
+        ctx.rect(j, i, size, size);
+        ctx.strokeStyle = '#49423d';
+        ctx.fillStyle = '#bbbbbb';
+        ctx.lineWidth = '1';
+        ctx.closePath();
+        ctx.stroke();
+        ctx.fill();
+      }
+    }
+  },
+  onclickSetSize: function size() {
+    document.querySelector('.radios').addEventListener('change', (ev) => {
+      const canvas = document.querySelector('.c-1');
+      const ctx = canvas.getContext('2d');
+      let pixelSize = ev.target.value;
+      switch (pixelSize) {
+        case '32': pixelSize = 15;
+          break;
+        case '48': pixelSize = 10;
+          break;
+        case '24': pixelSize = 20;
+          break;
+        default: pixelSize = 10;
+      }
+      canvas.dataset.size = pixelSize;
+      this.deleteSlides();
+      this.redrawCanvas(ctx, pixelSize, canvas.width, canvas.height);
+    });
+  },
+  onclickShadow: function shadow() {
+    document.querySelector('.shadow').addEventListener('click', () => {
+      const shadowTool = document.querySelector('.shadow');
+      shadowTool.dataset.state = 'on';
+    });
+  },
+  placePicturesOnSprite: function place(ctx, canvas, imgs) {
+    const size = 200;
+    let x = 30;
+    let y = 10;
+    const margin = 10;
+    const marginHeight = 240;
+    for (let i = 0; i < imgs.length; i += 1) {
+      if (i === 4) break;
+      if (i === 0) ctx.clearRect(0, 0, canvas.clientWidth, canvas.height);
+      if (i === 2) {
+        x = 30;
+        y = x + size;
+      } else if (i === 1) {
+        x = marginHeight;
+        y = margin;
+      } else if (i === 3) {
+        x = marginHeight;
+        y = marginHeight - margin;
+      }
+      const img = new Image();
+      img.src = imgs[i].src;
+      ctx.drawImage(img, x, y, size, size);
+    }
+  },
+  getCoordsFromInput: function coords(input) {
+    const coordsXY = [];
+    const values = document.querySelector('.coords').value;
+    const valuesXY = values.split(', ');
+    let x = +valuesXY[0];
+    let y = +valuesXY[1];
+    if (valuesXY.length === 3) {
+      // eslint-disable-next-line
+      coordsXY[2] = valuesXY[2];
+    }
+    if (Number.isNaN(x) || Number.isNaN(y)) {
+      x = 50;
+      y = 50;
+    }
+    coordsXY[0] = x;
+    coordsXY[1] = y;
+    const header = document.querySelector('.header');
+    header.removeChild(input);
+    return coordsXY;
+  },
+  getImageFromCanvas: function getIC(event) {
+    if (event.keyCode === 13) {
+      const tmp = document.querySelector('.c-1');
+      const img = document.getElementById('img');
+      const ref = document.getElementById('save-img');
+      img.src = tmp.toDataURL();
+      const slide = document.querySelectorAll('.slide');
+      const imgSlide = document.createElement('img');
+      const way = tmp.toDataURL();
+      imgSlide.src = way;
+      ref.href = way;
+      imgSlide.style.display = 'inline';
+      imgSlide.style.width = '100px';
+      imgSlide.style.height = '100px';
+      // eslint-disable-next-line prefer-destructuring
+      const id = slide[slide.length - 1].id;
+      const idNext = (+id[6] + 1);
+      if (document.querySelector(`#${id} img`)) {
+        const newSlide = document.createElement('div');
+        newSlide.setAttribute('class', 'slide');
+        newSlide.setAttribute('id', `slide-${idNext}`);
+        newSlide.appendChild(imgSlide);
+        document.querySelector('.container').insertAdjacentElement('beforeend', newSlide);
+        const dragElem = document.getElementById(`slide-${idNext}`);
+        addDragAndDrop(dragElem);
+      } else {
+        slide[slide.length - 1].appendChild(imgSlide);
+      }
+      img.style.display = 'none';
+    }
+  },
 };

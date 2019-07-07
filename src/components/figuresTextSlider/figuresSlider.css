@@ -1,9 +1,10 @@
 .section-sliders {
-    margin-top: 20px;
+    margin-top: 10px;
     border: 2px solid rgba(0, 0, 0, 0.6);
     box-shadow: 0 6px 4px rgba(0, 0, 0, 0.2);
     box-sizing: border-box;
     background: #cccccc;
+    padding-bottom: 5px;
 }
 
 .figures-sizes {
@@ -11,9 +12,9 @@
     appearance: none;
     margin-top: 10px;
     margin-left: 45px;
-    margin-bottom: 15px;
+    margin-bottom: 5px;
     width: 200px; /* Full-width */
-    height: 10px; /* Specified height */
+    height: 5px; /* Specified height */
     background: #ffffff; /* Grey background */
     outline: none; /* Remove outline */
     opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */

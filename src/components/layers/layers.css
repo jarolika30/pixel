@@ -1,0 +1,50 @@
+.layers { 
+    margin-top: 12px;
+    min-width: 290px;
+    min-height: 117px;
+    border: 2px solid rgba(0, 0, 0, 0.6);
+    box-shadow: 0 6px 4px rgba(0, 0, 0, 0.2);
+    box-sizing: border-box;
+    background: #cccccc;
+    padding-bottom: 5px;
+    display: flex;
+    flex-direction: row;
+    align-content: space-between;
+}
+
+.layers-img {
+    min-width: 120px;
+    min-height: 100px;
+    border: 2px solid rgba(0, 0, 0, 0.6);
+    box-shadow: 0 6px 4px rgba(0, 0, 0, 0.2);
+    margin: 1px;
+    margin-top: 2px;
+    margin-left: 20px;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+.layers button {
+    width: 100px;
+    height: 30px;
+    border-radius: 20px;
+    padding-top: 3px;
+    font-size: 12px;
+    font-weight: bold;
+    margin: 3px 20px 3px 20px;
+    border: 2px solid rgba(0, 0, 0, 0.6);
+    box-shadow: 0 6px 4px rgba(0, 0, 0, 0.2);
+}
+
+.layers button:hover {
+    border-color: rgba(0, 0, 0, 0.2);
+}
+
+.layers button:active {
+    border-color: rgba(0, 0, 0, 0.5);
+    outline: none;
+}
+
+.layers button:focus {
+    outline: none;
+}

@@ -1,6 +1,6 @@
 import addAnimation from './animation';
 
-describe('AppModel.extractClipNames', () => {
+describe('addAnimation', () => {
   it('Should be an instance of Function', () => {
     expect(addAnimation).toBeInstanceOf(Function);
   });

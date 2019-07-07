@@ -16,6 +16,8 @@ import showPageOne from './components/preview/preview';
 import addDragAndDrop from './components/dragAndDrop/swap';
 import addFiguresSlider from './components/figuresTextSlider/figuresSlider';
 import addKeyboardFunctionality from './components/keyboard/keyboard';
+import addLayers from './components/layers/layers';
+import makeLayers from './components/layers/layer';
 
 function init() {
   addSlides();
@@ -33,6 +35,8 @@ function init() {
   addCustomTools();
   exportCanvas();
   addFiguresSlider();
+  addLayers();
+  makeLayers();
   const slide = document.querySelector('.slide');
   addDragAndDrop(slide);
   addKeyboardFunctionality();

@@ -38,3 +38,16 @@
 #save-img {
   margin: 10px;
 }
+
+.color-ignore {
+  margin-top: 7px;
+  cursor: inherit;
+}
+
+.canvas .create-layer {
+  border: 2px solid rgba(0, 0, 0, 0.6);
+  box-shadow: 0 6px 4px rgba(0, 0, 0, 0.2);
+  height: 20px;
+  margin-top: 7px;
+  margin-right: 5px;
+}
